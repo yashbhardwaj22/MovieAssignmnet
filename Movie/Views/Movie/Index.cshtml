@@ -1,0 +1,35 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+@Html.Partial("_PartialMovie")
+ 
+<form method="post" id="Movielist">
+    <div class="form-group">
+        <label for="input">Search a movie by its ID:</label>
+        <input type="text" name="Search">
+    </div>
+
+
+    <input type="button"  value="Submit" class="btn btn-default" data-attr="submit"></input>
+</form>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script>
+    $('[data-attr="submit"]').on('click', function () {
+        $.ajax(
+            {
+                url: "/Movie/Index",
+                type: "POST",
+                data: $('#MovieList').serialize(),
+                success: function (response) {
+                    console.log(response);
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            });
+    });
+</script>
