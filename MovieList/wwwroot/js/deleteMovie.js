@@ -1,17 +1,17 @@
-﻿$('[data-attr="Delete_Movie"]').on('click', function () {
+﻿$('[data-attr="Movie_Delete"]').on('click', function () {
     $.ajax(
         {
             url: "/Movie/Delete",
             type: "POST",
             data: $('#DeleteMovie').serialize(),
             success: function (response) {
-                // console.log(response)
-                $('#PartialView').hide()
-                $('#PartialResultView').html(response)
+               
+                window.location.href = 'Index' //from stackoverflow
+               
 
             },
             Error: function (err) {
-                // console.log(err)
+            
             }
         });
 });

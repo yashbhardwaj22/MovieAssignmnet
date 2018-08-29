@@ -2,9 +2,9 @@
 
 namespace MovieList.Models
 {
-    public class MovieViewModel
+    public class ModelView
     {
         public int MovieID { get; set; }
-        public List<Movie> MovieList { get; set; }
+        public List<Movie> MovieViewList { get; set; }
     }
 }

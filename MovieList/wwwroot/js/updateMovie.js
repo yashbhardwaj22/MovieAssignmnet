@@ -1,4 +1,4 @@
-﻿$('[data-attr="Update_Movie"]').on('click', function () {
+﻿$('[data-attr="Movie_Update"]').on('click', function () {
     $.ajax(
         {
             url: "/Movie/Update",
@@ -6,8 +6,8 @@
             data: $('#UpdateMovie').serialize(),
             success: function (response) {
                 // console.log(response)
-                $('#PartialView').hide()
-                $('#PartialResultView').html(response)
+                window.location.href = 'Index' //from stackoverlow
+               
 
             },
             Error: function (err) {

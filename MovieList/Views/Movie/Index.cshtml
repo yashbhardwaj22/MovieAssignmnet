@@ -1,24 +1,25 @@
 ﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-@model MovieViewModel
+@model ModelView
 
 <h1>Movie Details</h1>
 <div id="PartialView">
-    <partial name="_ShowMovieListPartial" for="@Model.MovieList" />
+    <partial name="_MovieListPartial" for="@Model.MovieViewList" />
 </div>
 <div id="PartialResultView">
 
 </div>
 <div>
+
     <form method="post" class="form-group" id="MovieSearch">
-        <span class="form-inline">
-            Search a movie by its id :
-            <input type="number" asp-for="@Model.MovieID" class="form-control" />
-        </span>
+        
+            Search Movie by its id :
+            <input type="number" name="MovieID" class="form-control" />
+       
         <label>
         </label>
         <br />
     </form>
-    <input type="submit" value="submit" class="btn btn-primary" data-attr="submit" />
+    <input type="submit" value="submit" class="btn btn-primary" data-attr="Submit" />
 </div>
 
 

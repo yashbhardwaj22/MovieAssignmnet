@@ -12218,23 +12218,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\user\\.nuget\\packages\\": {},
+    "C:\\Users\\yashb\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\user\\Desktop\\DotNet\\MovieList\\MovieList\\MovieList.csproj",
-      "projectName": "MovieList",
-      "projectPath": "C:\\Users\\user\\Desktop\\DotNet\\MovieList\\MovieList\\MovieList.csproj",
-      "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\user\\Desktop\\DotNet\\MovieList\\MovieList\\obj\\",
+      "projectUniqueName": "C:\\Users\\yashb\\Music\\MovieList\\MovieList\\YashMovieList.csproj",
+      "projectName": "YashMovieList",
+      "projectPath": "C:\\Users\\yashb\\Music\\MovieList\\MovieList\\YashMovieList.csproj",
+      "packagesPath": "C:\\Users\\yashb\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\yashb\\Music\\MovieList\\MovieList\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\yashb\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

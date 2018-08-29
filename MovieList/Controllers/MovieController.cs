@@ -6,28 +6,24 @@ namespace MovieList.Controllers
     public class MovieController : Controller
     {
         
-        private MovieViewModel movieViewModel = new MovieViewModel();
-        private List<Movie> movieDataView;
-        public MovieController()
-        {
-            movieViewModel.MovieList = GetMovieData();
-            movieDataView = GetMovieData();
-        }
+        private  ModelView modelView = new ModelView();
+        
+        private static List<Movie> movieView = GetMovie();
         public IActionResult Index()
         {
-            return View(movieViewModel);
+            modelView.MovieViewList = movieView;
+            return View(modelView);
         }
 
         [HttpPost]
-        public IActionResult Index(MovieViewModel movie)
+        public IActionResult Index(ModelView movie)
         {
-            MovieViewModel viewModel= new MovieViewModel();
-            List<Movie> movieData = SearchByID(movie.MovieID);
-            viewModel.MovieID = movie.MovieID;
-            viewModel.MovieList = movieData;
-            if (movieViewModel.MovieList.Count != 0)
+            ModelView modelview= new ModelView();
+            modelview.MovieViewList = SearchByID(movie.MovieID);
+            modelview.MovieID = movie.MovieID;
+            if (modelview.MovieViewList.Count != 0)
             {    
-                return PartialView("_ShowMovieListPartial", viewModel.MovieList);
+                return PartialView("_MovieListPartial", modelview.MovieViewList);
             }
             return Json("Not Found");
         }
@@ -39,7 +35,7 @@ namespace MovieList.Controllers
         [HttpPost]
         public IActionResult Insert(Movie movie)
         {
-            movieDataView.Add(new Movie
+            movieView.Add(new Movie
             {
                 MovieID = movie.MovieID,
                 MovieName = movie.MovieName,
@@ -47,7 +43,7 @@ namespace MovieList.Controllers
                 MovieType = movie.MovieType
             });
 
-            return RedirectToAction("Update", "Movie");
+            return RedirectToAction("Index", "Movie");
         }
         public IActionResult Update()
         {
@@ -57,7 +53,7 @@ namespace MovieList.Controllers
         public IActionResult Update(Movie movie)
         {
             bool isFound = false;
-            foreach(var item in movieDataView)
+            foreach(var item in movieView)
             {
                 if(item.MovieID == movie.MovieID)
                 {
@@ -80,34 +76,34 @@ namespace MovieList.Controllers
         [HttpPost]
         public IActionResult Delete(Movie movie)
         {
-            bool isFound = false;
-            Movie tempMovieData = new Movie();
-            foreach (var item in movieDataView)
+            bool isPresent = false;
+            Movie removeMovieData = new Movie();
+            foreach (var item in movieView)
             {
                 if (item.MovieID == movie.MovieID)
                 {
-                    isFound = true;
-                    tempMovieData = item;
+                    isPresent = true;
+                    removeMovieData = item;
                 }
             }           
-            if (isFound)
+            if (isPresent)
             {
-                movieDataView.Remove(tempMovieData);
+                movieView.Remove(removeMovieData);
                 return RedirectToAction("Index", "Movie");
             }
             return NotFound();
         }      
-        private List<Movie> GetMovieData()
+        private static List<Movie> GetMovie()
         {
-            MovieData data = new MovieData();
-            return data.getMoviedata();
+            StaticData data = new StaticData();
+            return data.GetMoviedata();
         }
-        private List<Movie> SearchByID(int movieDataBind)
+        private List<Movie> SearchByID(int movieBind)
         {
             List<Movie> movieData = new List<Movie>();
-            foreach(Movie item in movieDataView)
+            foreach(Movie item in movieView)
             {
-                if(item.MovieID == movieDataBind)
+                if(item.MovieID == movieBind)
                 {
                     movieData.Add(item);
                 }
